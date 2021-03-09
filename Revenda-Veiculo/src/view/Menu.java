@@ -12,9 +12,7 @@ public class Menu {
 	private static final int OPCAO_MENU_SAIR = 5;
 
 	public void apresentarMenu() {
-
 		int opcao = this.apresentarOpcoesMenu();
-
 		while (opcao != OPCAO_MENU_SAIR) {
 			switch (opcao) {
 			case OPCAO_MENU_CLIENTE: {
@@ -35,6 +33,7 @@ public class Menu {
 				System.out.println("OPÇÃO INVÁLIDA");
 			}
 			}
+			opcao = this.apresentarOpcoesMenu();
 		}
 	}
 
@@ -48,8 +47,7 @@ public class Menu {
 		System.out.println(OPCAO_MENU_VENDA + " - MENU VENDA");
 		System.out.println(OPCAO_MENU_RELATORIO + " - MENU RELATÓRIO");
 		System.out.println(OPCAO_MENU_SAIR + " - MENU SAIR");
-		System.out.print("\nDIGITE A OPÇÃO:");
-
+		System.out.print("\nDIGITE A OPÇÃO: ");
 		return Integer.parseInt(teclado.nextLine());
 	}
 }
