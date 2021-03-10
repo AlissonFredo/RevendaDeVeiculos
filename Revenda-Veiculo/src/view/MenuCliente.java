@@ -1,7 +1,9 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import controller.ControladoraCliente;
 import model.vo.ClienteVO;
 
 public class MenuCliente {
@@ -67,10 +69,55 @@ public class MenuCliente {
 		clienteVO.setCpf(teclado.nextLine());
 		System.out.println("DIGITE O TELEFONE DO CLIENTE: ");
 		clienteVO.setTelefone(teclado.nextLine());
+
+		ControladoraCliente controladoraCliente = new ControladoraCliente();
+		String resultado = controladoraCliente.cadastrarClienteController(clienteVO);
+		System.out.println(resultado);
+		System.out.println();
 	}
 
 	private void consultarCliente() {
 		int opcao = this.apresentarOpcoesConsultarCliente();
+		ControladoraCliente controladoraCliente = new ControladoraCliente();
+		while (opcao != OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR) {
+			switch (opcao) {
+			case OPCAO_MENU_CONSULTAR_TODOS_CLIENTES:
+				opcao = OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR;
+				ArrayList<ClienteVO> listaClienteVO = controladoraCliente.consultarTodosClientesController();
+				if (listaClienteVO.isEmpty()) {
+					System.out.println("NÃO FOI ENCONTRADO REGISTRO PARA APRESENTAR");
+				}
+				System.out.println();
+				System.out.println("------ RESULTADO DA CONSULTA ------");
+				System.out.printf("\n %3s   %-8s   %-6s   %-10s \n", "ID", "NOME", "CPF", "TELEFONE");
+				for (int i = 0; i < listaClienteVO.size(); i++) {
+					listaClienteVO.get(i).imprimirCliente();
+				}
+				break;
+			case OPCAO_MENU_CONSULTAR_UM_CLIENTE:
+				opcao = OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR;
+				ClienteVO clienteVO = new ClienteVO();
+				System.out.print("DIGITE O CÓDIGO DO CLIENTE: ");
+				clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));
+
+				ClienteVO cliente = controladoraCliente.consultarUmClienteController(clienteVO);
+
+				if (cliente == null) {
+					System.out.println("NÃO FOI ENCONTRADO REGISTRO PARA APRESENTAR");
+				}
+				System.out.println();
+				System.out.println("------ RESULTADO DA CONSULTA ------");
+				System.out.printf("\n %3s   %-8s   %-6s   %-10s \n", "ID", "NOME", "CPF", "TELEFONE");
+				if (cliente != null) {
+					cliente.imprimirCliente();
+				}
+				System.out.println();
+				break;
+			default:
+				System.out.println("OPÇÃO INVÁLIDA");
+				break;
+			}
+		}
 	}
 
 	private int apresentarOpcoesConsultarCliente() {
@@ -92,12 +139,22 @@ public class MenuCliente {
 		clienteVO.setCpf(teclado.nextLine());
 		System.out.println("DIGITE O TELEFONE DO CLIENTE: ");
 		clienteVO.setTelefone(teclado.nextLine());
+
+		ControladoraCliente controladoraCliente = new ControladoraCliente();
+		String resultado = controladoraCliente.atualizarClienteController(clienteVO);
+		System.out.println(resultado);
+		System.out.println();
 	}
 
 	private void excluirCliente() {
 		ClienteVO clienteVO = new ClienteVO();
 		System.out.println("DIGITE O CÓDIGO DO CLIENTE: ");
 		clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));
+
+		ControladoraCliente controladoraCliente = new ControladoraCliente();
+		String resultado = controladoraCliente.excluirClienteController(clienteVO);
+		System.out.println(resultado);
+		System.out.println();
 	}
 
 }
