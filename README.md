@@ -1,14 +1,14 @@
-<h1 align="center">CRUD</h1>
+<h1 align="center">Revenda de Veiculos</h1>
 <h2>&#x1F4D2; Sobre:</h2>
-<p align="justify">Neste repositório vou botar pequenos sistemas que estarei fazendo CRUDs. Para fazer estes CRUDs vou usar como base o projeto Revenda Veiculo que foi desenvolvido na faculdade na matéria de POO. O objetivo é que eu pratique a linguagem Java e o processo para conectar o sistema com o banco de dados.&#x1F61C;&#x1F61C;&#x1F61C;</p>
+<p align="justify">Revenda de Veículos foi o projeto final da matéria de POO da faculdade. Ele é um CRUD, foi construído usando o padrão MVC e foi usado MySql no banco de dados. Eu estou reescrevendo o codigo com <b>objetivo de praticar a linguagem Java, praticar o processo para conectar o sistema com o banco de dados</b> e guardar o projeto aqui no GitHub.&#x1F61C;&#x1F61C;&#x1F61C;</p>
 
 <br>
-<h2 align="center">&#x1F6A7 CRUD em construção &#x1F6A7</h2>
+<h2 align="center">&#x1F6A7 Revenda de Veiculos em construção &#x1F6A7</h2>
 <br>
 
 <br>
 <h2>&#x1F6E0 Tecnologias:</h2>
-<p align="justify">As seguintes ferramentas foram usadas na construção do CRUD:</p>
+<p align="justify">As seguintes ferramentas sendo usadas na construção de Revenda de Veiculos:</p>
 <ul>
     <li><a href="https://www.java.com/pt-BR/about/whatis_java.jsp">Java</a></li>
     <li><a href="https://www.mysql.com/">MySQL</a></li>
@@ -16,7 +16,7 @@
 </ul>
 <br>
 <h2>&#x2705 Padrão de projeto</h2>
-<p align="justify">O seguinte padão de projeto foi usado na construção do CRUD:</p>
+<p align="justify">O seguinte padão de projeto foi usado na construção de Revenda de Veiculos:</p>
 <ul>
     <li><a href="https://www.devmedia.com.br/introducao-ao-padrao-mvc/29308">MVC (model - view - controller)</a></li>
     
