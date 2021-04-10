@@ -32,7 +32,7 @@ public class Menu {
 				break;
 			}
 			default: {
-				System.out.println("OPÇÃO INVÁLIDA");
+				System.out.println("Opção invalida");
 			}
 			}
 			opcao = this.apresentarOpcoesMenu();
@@ -40,16 +40,14 @@ public class Menu {
 	}
 
 	private int apresentarOpcoesMenu() {
-		System.out.println("*************************");
 		System.out.println("|| REVENDA FERRO VELHO ||");
-		System.out.println("*************************");
-		System.out.println("\nOPÇÕES");
-		System.out.println(OPCAO_MENU_CLIENTE + " - MENU CLIENTE");
-		System.out.println(OPCAO_MENU_VEICULO + " - MENU VEÍCULO");
-		System.out.println(OPCAO_MENU_VENDA + " - MENU VENDA");
-		System.out.println(OPCAO_MENU_RELATORIO + " - MENU RELATÓRIO");
-		System.out.println(OPCAO_MENU_SAIR + " - MENU SAIR");
-		System.out.print("\nDIGITE A OPÇÃO: ");
+		System.out.println("Opções");
+		System.out.println(OPCAO_MENU_CLIENTE + " - Menu cliente");
+		System.out.println(OPCAO_MENU_VEICULO + " - Menu veiculo");
+		System.out.println(OPCAO_MENU_VENDA + " - Menu venda");
+		System.out.println(OPCAO_MENU_RELATORIO + " - Menu relatorio");
+		System.out.println(OPCAO_MENU_SAIR + " - sair");
+		System.out.print("Digite a opção: ");
 		return Integer.parseInt(teclado.nextLine());
 	}
 }

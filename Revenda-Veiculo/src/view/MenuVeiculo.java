@@ -45,7 +45,7 @@ public class MenuVeiculo {
 				break;
 			}
 			default: {
-				System.out.println("Opção invalida");
+				System.err.println("Opção invalida");
 			}
 			}
 			opcao = this.apresentarOpcoesMenuVeiculo();
@@ -60,14 +60,13 @@ public class MenuVeiculo {
 		ControladoraVeiculo controladoraVeiculo = new ControladoraVeiculo();
 		String resultado = controladoraVeiculo.excluirVeiculoController(veiculoVO);
 		System.out.println(resultado);
-		System.out.println();
 	}
 
 	private void atualizarVeiculo() {
 		VeiculoVO veiculoVO = new VeiculoVO();
 		System.out.print("\nDigite o id do veiculo:");
 		veiculoVO.setIdVeiculo(Integer.parseInt(teclado.nextLine()));
-		System.out.print("\nDigite o modelo do veiculo: ");
+		System.out.print("Digite o modelo do veiculo: ");
 		veiculoVO.setModelo(teclado.nextLine());
 		System.out.println("Digite o tipo do veiculo");
 		int opcao = this.apresentarOpcoesTipoVeiculo();
@@ -89,24 +88,23 @@ public class MenuVeiculo {
 				break;
 			}
 			default: {
-				System.out.println("\nOpção invalida!");
+				System.err.println("Opção invalida!");
 				opcao = this.apresentarOpcoesTipoVeiculo();
 			}
 			}
 		}
-		System.out.print("\nDigite o fabricante do veiculo: ");
+		System.out.print("Digite o fabricante do veiculo: ");
 		veiculoVO.setFabricante(teclado.nextLine());
-		System.out.print("\nDigite o ano do veiculo: ");
+		System.out.print("Digite o ano do veiculo: ");
 		veiculoVO.setAno(Integer.parseInt(teclado.nextLine()));
-		System.out.print("\nDigite a cor do veiculo: ");
+		System.out.print("Digite a cor do veiculo: ");
 		veiculoVO.setCor(teclado.nextLine());
-		System.out.print("\nDigite a placa do veiculo: ");
+		System.out.print("Digite a placa do veiculo: ");
 		veiculoVO.setPlaca(teclado.nextLine());
 
 		ControladoraVeiculo controladoraVeiculo = new ControladoraVeiculo();
 		String resultado = controladoraVeiculo.atualizarVeiculoController(veiculoVO);
 		System.out.println(resultado);
-		System.out.println();
 	}
 
 	private void consultarVeiculo() {
@@ -118,12 +116,13 @@ public class MenuVeiculo {
 				opcao = OPCAO_MENU_CONSULTAR_VEICULO_VOLTAR;
 				ArrayList<VeiculoVO> listaVeiculoVO = controladoraVeiculo.consultarTodosVeiculosController();
 				if (listaVeiculoVO.isEmpty()) {
-					System.out.println("Não foi encontrada a lista");
+					System.out.println("Não foi possivel encontrar a lista de veiculos");
 				}
 				System.out.println("Resultado da consulta");
 				for (int i = 0; i < listaVeiculoVO.size(); i++) {
 					System.out.println(listaVeiculoVO.get(i).toString());
 				}
+				System.out.println();
 				break;
 			}
 			case OPCAO_MENU_CONSULTAR_UM_VEICULO: {
@@ -134,7 +133,7 @@ public class MenuVeiculo {
 
 				VeiculoVO veiculo = controladoraVeiculo.consultarUmVeiculoControler(veiculoVO);
 				if (veiculo.getPlaca() == null) {
-					System.out.println("Não foi encontrado veiculo!");
+					System.out.println("Não foi possivel encontrar veiculo!");
 				} else {
 					System.out.println("Resultado da consulta");
 					System.out.println(veiculo.toString());
@@ -143,15 +142,15 @@ public class MenuVeiculo {
 				break;
 			}
 			default: {
-				System.out.println("Opção invalida");
+				System.err.println("Opção invalida");
+				opcao = this.apresentarOpcoesMenuConsulta();
 			}
 			}
 		}
-
 	}
 
 	private int apresentarOpcoesMenuConsulta() {
-		System.out.println("Opções de consulta");
+		System.out.println("\n|| OPÇÕES DE CONSULTA ||");
 		System.out.println(OPCAO_MENU_CONSULTAR_TODOS_VEICULOS + " - Consultar todos veiculos");
 		System.out.println(OPCAO_MENU_CONSULTAR_UM_VEICULO + " - Consultar um veiculo");
 		System.out.println(OPCAO_MENU_CONSULTAR_VEICULO_VOLTAR + " - Voltar");
@@ -163,7 +162,7 @@ public class MenuVeiculo {
 		VeiculoVO veiculoVO = new VeiculoVO();
 		System.out.print("\nDigite o modelo do veiculo: ");
 		veiculoVO.setModelo(teclado.nextLine());
-		System.out.println("Digite o tipo do veiculo");
+		System.out.println("Digite o tipo do veiculo: ");
 		int opcao = this.apresentarOpcoesTipoVeiculo();
 		while (opcao != OPCAO_VEICULO_SAIR) {
 			switch (opcao) {
@@ -183,24 +182,23 @@ public class MenuVeiculo {
 				break;
 			}
 			default: {
-				System.out.println("\nOpção invalida!");
+				System.err.println("Opção invalida!");
 				opcao = this.apresentarOpcoesTipoVeiculo();
 			}
 			}
 		}
-		System.out.print("\nDigite o fabricante do veiculo: ");
+		System.out.print("Digite o fabricante do veiculo: ");
 		veiculoVO.setFabricante(teclado.nextLine());
-		System.out.print("\nDigite o ano do veiculo: ");
+		System.out.print("Digite o ano do veiculo: ");
 		veiculoVO.setAno(Integer.parseInt(teclado.nextLine()));
-		System.out.print("\nDigite a cor do veiculo: ");
+		System.out.print("Digite a cor do veiculo: ");
 		veiculoVO.setCor(teclado.nextLine());
-		System.out.print("\nDigite a placa do veiculo: ");
+		System.out.print("Digite a placa do veiculo: ");
 		veiculoVO.setPlaca(teclado.nextLine());
 
 		ControladoraVeiculo controladoraVeiculo = new ControladoraVeiculo();
 		String resultado = controladoraVeiculo.cadastrarVeiculoController(veiculoVO);
 		System.out.println(resultado);
-		System.out.println();
 	}
 
 	private int apresentarOpcoesTipoVeiculo() {
@@ -208,22 +206,19 @@ public class MenuVeiculo {
 		System.out.println(OPCAO_VEICULO_CARRO + " - Carro");
 		System.out.println(OPCAO_VEICULO_MOTO + " - Moto");
 		System.out.println(OPCAO_VEICULO_SUV + " - Suv");
-		System.out.print("\nDigite a opção: ");
+		System.out.print("Digite a opção: ");
 		return Integer.parseInt(teclado.nextLine());
 	}
 
 	private int apresentarOpcoesMenuVeiculo() {
-		System.out.println();
-		System.out.println("*****************");
-		System.out.println("|| MENU VEICULO ||");
-		System.out.println("*****************");
-		System.out.println("\n opções");
+		System.out.println("\n|| MENU VEICULO ||");
+		System.out.println("Opções");
 		System.out.println(OPCAO_MENU_VEICULO_CADASTRADO + " - cadastrar veiculo");
 		System.out.println(OPCAO_MENU_VEICULO_CONSULTAR + " - consultar veiculo");
 		System.out.println(OPCAO_MENU_VEICULO_ATUALIZAR + " - atualizar veiculo");
 		System.out.println(OPCAO_MENU_VEICULO_EXCLUIR + " - excluir veiculo");
 		System.out.println(OPCAO_MENU_VEICULO_VOLTAR + " - voltar");
-		System.out.print("\ndigite a opção: ");
+		System.out.print("digite a opção: ");
 		return Integer.parseInt(teclado.nextLine());
 	}
 }

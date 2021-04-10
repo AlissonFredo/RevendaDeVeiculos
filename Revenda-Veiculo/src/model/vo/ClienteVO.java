@@ -1,7 +1,7 @@
 package model.vo;
 
 public class ClienteVO {
-	
+
 	private int idCliente;
 	private String nome;
 	private String cpf;
@@ -51,11 +51,8 @@ public class ClienteVO {
 		this.telefone = telefone;
 	}
 
-	public void imprimirCliente() {
-		System.out.printf("%3d   %-8s   %-6s   %-10s \n"
-				, this.getIdCliente()
-				, this.getNome()
-				, this.getCpf()
-				, this.getTelefone());
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + "]";
 	}
 }

@@ -7,18 +7,18 @@ import model.vo.ClienteVO;
 
 public class ClienteBO {
 
+	ClienteDAO clienteDAO = new ClienteDAO();
+
 	public String cadastrarClienteBO(ClienteVO clienteVO) {
 		String retorno;
-		ClienteDAO clienteDAO = new ClienteDAO();
-
 		if (clienteDAO.verficarCliente(clienteVO.getCpf())) {
-			retorno = "\n CLIENTE JÁ CADASTRADO!";
+			retorno = "\nCliente ja cadastrado!";
 		} else {
 			int resultado = clienteDAO.cadastrarClienteDAO(clienteVO);
 			if (resultado == 1) {
-				retorno = "\n CLIENTE CADASTRADO COM SUCESSO!";
+				retorno = "\nCliente cadastrado com sucesso!";
 			} else {
-				retorno = "\n NÃO FOI POSSIVEL CADASTRAR O CLIENTE!";
+				retorno = "\nNão foi possivel cadastrar o cliente!";
 			}
 		}
 		return retorno;
@@ -26,34 +26,30 @@ public class ClienteBO {
 
 	public String atualizarClienteBO(ClienteVO clienteVO) {
 		String retorno;
-		ClienteDAO clienteDAO = new ClienteDAO();
-
 		if (clienteDAO.verificarClientePorId(clienteVO.getIdCliente())) {
 			int resultado = clienteDAO.atualizarClienteDAO(clienteVO);
 			if (resultado == 1) {
-				retorno = "\n CLIENTE ATUALIZADO COM SUCESSO";
+				retorno = "\nCliente atualizado com sucesso";
 			} else {
-				retorno = "\n NÃO FOI POSSÍVEL ATUALIZAR CLIENTE!";
+				retorno = "\nNão foi possivel atualizar cliente!";
 			}
 		} else {
-			retorno = "\n CLIENTE NÃO ESTÁ REGISTRADO NO BANCO!";
+			retorno = "\nCliente não está registrado no banco!";
 		}
 		return retorno;
 	}
 
 	public String excluirClienteBO(ClienteVO clienteVO) {
 		String retorno;
-		ClienteDAO clienteDAO = new ClienteDAO();
-
 		if (clienteDAO.verificarClientePorId(clienteVO.getIdCliente())) {
 			int resultado = clienteDAO.excluirClienteDAO(clienteVO);
 			if (resultado == 1) {
-				retorno = "\n CLIENTE EXCLUIDO COM SUCESSO!";
+				retorno = "\nCliente excluido com sucesso!!";
 			} else {
-				retorno = "\n NÃO FOI POSSIVEL EXCLUIR CLIENTE!";
+				retorno = "\nNão foi possivel excluir cliente!";
 			}
 		} else {
-			retorno = "\n CLIENTE NÃO ENCONTRADO NO BANCO!";
+			retorno = "\nCliente não encontrado no banco!";
 		}
 		return retorno;
 	}

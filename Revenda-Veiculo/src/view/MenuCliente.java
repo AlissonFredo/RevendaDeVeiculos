@@ -40,7 +40,7 @@ public class MenuCliente {
 				break;
 			}
 			default: {
-				System.out.println("OPÇÃO INVÁLIDA");
+				System.err.println("Opção invalida");
 			}
 			}
 			opcao = this.apresentarOpcoesMenuCliente();
@@ -48,32 +48,28 @@ public class MenuCliente {
 	}
 
 	private int apresentarOpcoesMenuCliente() {
-		System.out.println();
-		System.out.println("******************");
-		System.out.println("|| MENU CLIENTE ||");
-		System.out.println("******************");
-		System.out.println(OPCAO_MENU_CLIENTE_CADASTRAR + " - CADASTRAR CLIENTE");
-		System.out.println(OPCAO_MENU_CLIENTE_CONSULTAR + " - CONSULTAR CLIENTE");
-		System.out.println(OPCAO_MENU_CLIENTE_ATUALIZAR + " - ATUALIZAR CLIENTE");
-		System.out.println(OPCAO_MENU_CLIENTE_EXCLUIR + " - EXCLUIR CLIENTE");
-		System.out.println(OPCAO_MENU_CLIENTE_VOLTAR + " - VOLTAR");
-		System.out.print("\nDIGITE A OPÇÃO: ");
+		System.out.println("\n|| MENU CLIENTE ||");
+		System.out.println(OPCAO_MENU_CLIENTE_CADASTRAR + " - Cadastrar cliente");
+		System.out.println(OPCAO_MENU_CLIENTE_CONSULTAR + " - Consultar cliente");
+		System.out.println(OPCAO_MENU_CLIENTE_ATUALIZAR + " - Atualizar cliente");
+		System.out.println(OPCAO_MENU_CLIENTE_EXCLUIR + " - Excluir cliente");
+		System.out.println(OPCAO_MENU_CLIENTE_VOLTAR + " - Voltar");
+		System.out.print("Digite a opção: ");
 		return Integer.parseInt(teclado.nextLine());
 	}
 
 	private void cadastrarCliente() {
 		ClienteVO clienteVO = new ClienteVO();
-		System.out.println("DIGITE O NOME DO CLIENTE: ");
+		System.out.print("\nDigite o nome do cliente: ");
 		clienteVO.setNome(teclado.nextLine());
-		System.out.println("DIGITE O CPF DO CLIENTE: ");
+		System.out.print("Digite o cpf do cliente: ");
 		clienteVO.setCpf(teclado.nextLine());
-		System.out.println("DIGITE O TELEFONE DO CLIENTE: ");
+		System.out.print("Digite o telefone do cliente: ");
 		clienteVO.setTelefone(teclado.nextLine());
 
 		ControladoraCliente controladoraCliente = new ControladoraCliente();
 		String resultado = controladoraCliente.cadastrarClienteController(clienteVO);
 		System.out.println(resultado);
-		System.out.println();
 	}
 
 	private void consultarCliente() {
@@ -85,76 +81,70 @@ public class MenuCliente {
 				opcao = OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR;
 				ArrayList<ClienteVO> listaClienteVO = controladoraCliente.consultarTodosClientesController();
 				if (listaClienteVO.isEmpty()) {
-					System.out.println("NÃO FOI ENCONTRADO REGISTRO PARA APRESENTAR");
+					System.out.println("Não foi possivel encontrar a lista de clientes");
 				}
 				System.out.println();
-				System.out.println("------ RESULTADO DA CONSULTA ------");
-				System.out.printf("\n %3s   %-8s   %-6s   %-10s \n", "ID", "NOME", "CPF", "TELEFONE");
+				System.out.println("Resultado da consulta");
 				for (int i = 0; i < listaClienteVO.size(); i++) {
-					listaClienteVO.get(i).imprimirCliente();
+					System.out.println(listaClienteVO.get(i).toString());
 				}
+				System.out.println();
 				break;
 			case OPCAO_MENU_CONSULTAR_UM_CLIENTE:
 				opcao = OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR;
 				ClienteVO clienteVO = new ClienteVO();
-				System.out.print("DIGITE O CÓDIGO DO CLIENTE: ");
+				System.out.print("Digite o codigo do cliente: ");
 				clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));
-
 				ClienteVO cliente = controladoraCliente.consultarUmClienteController(clienteVO);
-
 				if (cliente == null) {
-					System.out.println("NÃO FOI ENCONTRADO REGISTRO PARA APRESENTAR");
+					System.out.println("Não foi possivel encontrar cliente");
 				}
-				System.out.println();
-				System.out.println("------ RESULTADO DA CONSULTA ------");
-				System.out.printf("\n %3s   %-8s   %-6s   %-10s \n", "ID", "NOME", "CPF", "TELEFONE");
+				System.out.println("Resultado da consulta");
 				if (cliente != null) {
-					cliente.imprimirCliente();
+					System.out.println(cliente.toString());
 				}
 				System.out.println();
 				break;
 			default:
-				System.out.println("OPÇÃO INVÁLIDA");
-				break;
+				System.err.println("Opção invalida");
+				opcao = this.apresentarOpcoesConsultarCliente();
 			}
 		}
 	}
 
 	private int apresentarOpcoesConsultarCliente() {
-		System.out.println("------ OPÇÕES DE CONSULTA CLIENTE ------");
-		System.out.println(OPCAO_MENU_CONSULTAR_TODOS_CLIENTES + " - CONSULTAR TODOS CLIENTES");
-		System.out.println(OPCAO_MENU_CONSULTAR_UM_CLIENTE + " - CONSULTAR UM CLIENTE");
-		System.out.println(OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR + " - VOLTAR");
-		int opcao = Integer.parseInt(teclado.nextLine());
-		return opcao;
+		System.out.println("\n|| OPÇÕES DE CONSULTA CLIENTE ||");
+		System.out.println(OPCAO_MENU_CONSULTAR_TODOS_CLIENTES + " - Consultar todos clientes");
+		System.out.println(OPCAO_MENU_CONSULTAR_UM_CLIENTE + " - Consultar um cliente");
+		System.out.println(OPCAO_MENU_CONSULTAR_CLIENTES_VOLTAR + " - voltar");
+		System.out.print("Digite a opção: ");
+		return Integer.parseInt(teclado.nextLine());
 	}
 
 	private void atualizasCliente() {
 		ClienteVO clienteVO = new ClienteVO();
-		System.out.println("DIGITE O CÓDIGO DO CLIENTE: ");
+		System.out.print("Digite o codigo do cliente: ");
 		clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));
-		System.out.println("DIGITE O NOME DO CLIENTE: ");
+		System.out.print("Digite o nome do cliente: ");
 		clienteVO.setNome(teclado.nextLine());
-		System.out.println("DIGITE O CPF DO CLIENTE: ");
+		System.out.print("Digite o cpf do cliente: ");
 		clienteVO.setCpf(teclado.nextLine());
-		System.out.println("DIGITE O TELEFONE DO CLIENTE: ");
+		System.out.print("Digite o telefone do cliente: ");
 		clienteVO.setTelefone(teclado.nextLine());
 
 		ControladoraCliente controladoraCliente = new ControladoraCliente();
 		String resultado = controladoraCliente.atualizarClienteController(clienteVO);
 		System.out.println(resultado);
-		System.out.println();
 	}
 
 	private void excluirCliente() {
 		ClienteVO clienteVO = new ClienteVO();
-		System.out.println("DIGITE O CÓDIGO DO CLIENTE: ");
+		System.out.print("Digite o codigo do cliente: ");
 		clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));
 
 		ControladoraCliente controladoraCliente = new ControladoraCliente();
 		String resultado = controladoraCliente.excluirClienteController(clienteVO);
 		System.out.println(resultado);
-		System.out.println();
 	}
 
 }
