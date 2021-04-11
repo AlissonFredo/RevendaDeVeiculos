@@ -3,6 +3,8 @@ package view;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import model.vo.VendaVO;
+
 public class MenuVenda {
 
 	Scanner teclado = new Scanner(System.in);
@@ -61,7 +63,7 @@ public class MenuVenda {
 	}
 
 	private void cadastrarVenda() {
-		
+		VendaVO vendaVO = new VendaVO(); 
 	}
 
 	private int apresentarOpcaoMenuVenda() {
