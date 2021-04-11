@@ -6,29 +6,26 @@ import model.vo.VendaVO;
 
 public class ControladoraVenda {
 
+	VendaBO vendaBO = new VendaBO();
+
 	public String cadastrarVendaController(VendaVO vendaVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendaBO.cadastrarVendaBO(vendaVO);
 	}
 
 	public String atualizarVendaController(VendaVO vendaVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendaBO.atualizarVendaBO(vendaVO);
 	}
 
 	public String excluirVendaController(VendaVO vendaVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendaBO.excluirVendaBO(vendaVO);
 	}
 
 	public ArrayList<VendaVO> consultarTodasVendasController() {
-		// TODO Auto-generated method stub
-		return null;
+		return vendaBO.consultarTodasVendasBO();
 	}
 
 	public VendaVO consultarUmaVendaController(VendaVO vendaVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendaBO.consultarUmaVendaBO(vendaVO);
 	}
 
 }
