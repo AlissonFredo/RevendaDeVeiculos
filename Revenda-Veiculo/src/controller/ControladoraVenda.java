@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.bo.VendaBO;
 import model.vo.VendaVO;
 
 public class ControladoraVenda {
