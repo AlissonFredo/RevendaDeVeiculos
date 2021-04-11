@@ -26,6 +26,8 @@ public class Menu {
 				break;
 			}
 			case OPCAO_MENU_VENDA: {
+				MenuVenda menuVenda = new MenuVenda();
+				menuVenda.apresentarMenuVenda();
 				break;
 			}
 			case OPCAO_MENU_RELATORIO: {
